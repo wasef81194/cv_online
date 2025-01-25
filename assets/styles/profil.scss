@@ -1,0 +1,54 @@
+@use "_variable.scss" as *;
+.profile {
+    position: relative;
+    .cover {
+        max-height: 250px;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+            border-radius: 0 0 8px 8px;
+        }
+    }
+    .info-profile{
+        display: flex;
+        .pp {
+            max-width: 180px;
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            z-index: 1;
+            .img-pp {
+                width: 100%;
+                border-radius: 50%;
+                border: 4px solid #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .img-verified{
+                width: 40px;
+                position: absolute;
+                bottom: 21px;
+                right: -4px;
+            }
+        }
+        .empty {
+            display: block;
+            max-width: 250px;
+            width: 100%;
+            height: 50px; /* Ajoutez une hauteur */
+        }
+        .info{
+            h1{
+                margin-bottom: 0 ;
+            }
+            p{
+                margin-top: 10px;
+                color: $text-grey;
+                font-size: 19px;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@use "_variable.scss" as *;
+@use "profil.scss";
+
+body{
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+    margin-top: 0;
+}
+#app{
+    margin-top: 0;
+    max-width: 1620px;
+    margin: auto;
+    width: calc(100% - 40px);
+}

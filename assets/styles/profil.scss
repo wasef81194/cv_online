@@ -50,5 +50,18 @@
                 font-size: 19px;
             }
         }
+        .contact{
+            flex: 1;
+            display: flex;
+            height: fit-content;
+            justify-content: end;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 17px;
+            div{
+                display: flex;
+                gap:7px;
+            }
+        }
     }
 }

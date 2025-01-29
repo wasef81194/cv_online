@@ -15,11 +15,22 @@ const Home = () => {
             <img className="img-pp" src={PhotoProfile} alt="Profile picture" />
             <img className="img-verified" src={Verified} alt="" />
           </div>
-          <div className='empty'></div>
+          <div className='empty'></div> 
           <div className='info'>
             <h1>Alexandra Wasef</h1>
-            <p>Je suis developpeuse web Full Stack</p>
+            <p>Je suis developpeuse web full stack</p>
           </div>
+          <div className='contact'>
+            <div className='message btn btn-white'>
+              <i className="bi bi-envelope-at"></i> 
+              Message
+            </div>
+            <div className='call btn btn-black'>
+              <i class="bi bi-voicemail"></i>
+              Appeler
+            </div>
+          </div>
+          
         </div>
     </div>
   );

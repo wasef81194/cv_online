@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import PhotoProfile from './../images/pp.png';
 import PhotoCover from './../images/cover.png';
 import Verified from './../images/verified.png';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const Home = () => {
+  const [apiData, setApiData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/proxy');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Erreur:', error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className='profile'>
+        {apiData ? (
+          <p>Données de l'API : {JSON.stringify(apiData)}</p>
+        ) : (
+          <p>Chargement des données...</p>
+        )}
         {/* <Link to="/test">Aller à la page de test</Link> */}
         <div className='cover'>
           <img src={PhotoCover} alt="Cover picture" />
@@ -26,7 +45,7 @@ const Home = () => {
               Message
             </div>
             <div className='call btn btn-black'>
-              <i class="bi bi-voicemail"></i>
+              <i className="bi bi-voicemail"></i>
               Appeler
             </div>
           </div>

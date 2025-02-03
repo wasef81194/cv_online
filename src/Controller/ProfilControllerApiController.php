@@ -28,7 +28,7 @@ final class ProfilControllerApiController extends AbstractController
         }
 
         //Recupere toutes les infos du profil
-        $profil = $profilRepository->findOneBy(['id' => 1]);
+        $profil = $profilRepository->findOneBy(['id' => $_ENV['ID_PROFIL']]);
         if (!$profil) {
             return new JsonResponse(['error' => 'Profil not found'], 404);
         }

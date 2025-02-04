@@ -19,9 +19,11 @@ class ApiKeyChecker
 
         // Vérifiez si la clé correspond à celle définie dans l'environnement
         if ($key !== $this->apiKey) {
+            //dd('key does not match');
+            dd($this->apiKey, $key);
             return false;
         }
-
+       
         // Si tout est correct, la clé est valide
         return true;
     }

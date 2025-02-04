@@ -1,43 +1,48 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PhotoProfile from './../images/pp.png';
 import PhotoCover from './../images/cover.png';
 import Verified from './../images/verified.png';
 import { Link } from 'react-router-dom';
+
 const Home = () => {
-  console.log(process.env.KEY_API);
-  
   const [apiData, setApiData] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/profil', {
-          method: 'GET',
-          headers: {
-            'Authorization': 'dsAefdcxsE62dse589esf4s', // Inclure la clé API dans le header
-            'Content-Type': 'application/json',
-          },
-        });
-    
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP : ${response.status}`);
-        }
-    
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données :', error);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch('/api/profil', {
+        method: 'GET',
+        headers: {
+          'Authorization': `${process.env.KEY_API}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP : ${response.status}`);
       }
-    };
-    fetchData();
+
+      const data = await response.json();
+      setApiData(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isLoading) return <p>Chargement des données...</p>;
+  if (error) return <p>Erreur : {error}</p>;
+
   return (
-    <div className='profile'>
-        {apiData ? (
-          <p>Données de l'API : {JSON.stringify(apiData)}</p>
-        ) : (
-          <p>Chargement des données...</p>
-        )}
-        {/* <Link to="/test">Aller à la page de test</Link> */}
+    <div className='home'>
+      {apiData && (
+        <div className='profile'>
         <div className='cover'>
           <img src={PhotoCover} alt="Cover picture" />
         </div>
@@ -48,8 +53,8 @@ const Home = () => {
           </div>
           <div className='empty'></div> 
           <div className='info'>
-            <h1>Alexandra Wasef</h1>
-            <p>Je suis developpeuse web full stack</p>
+            <h1>{apiData.lastname} {apiData.firstname}</h1>
+            <p>{apiData.job}</p>
           </div>
           <div className='contact'>
             <div className='message btn btn-white'>
@@ -61,10 +66,13 @@ const Home = () => {
               Appeler
             </div>
           </div>
-          
         </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Home;
+
+        

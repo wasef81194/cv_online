@@ -22,7 +22,7 @@ final class ProfilControllerApiController extends AbstractController
      public function infos(Request $request, ApiKeyChecker $apiKeyChecker, ProfilRepository $profilRepository, SerializerInterface $serializer): JsonResponse
      {
         //Verifie la clé
-        $key = $request->query->get('key');
+        $key = $request->headers->get('Authorization');
         if (!$apiKeyChecker->checkApiKey($key)) {
             return new JsonResponse(['error' => 'Key not found'], 400);
         }

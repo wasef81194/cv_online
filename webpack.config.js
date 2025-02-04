@@ -7,7 +7,18 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
+console.log("loading...");
+
 Encore
+   // define the environment variables
+   .configureDefinePlugin(options => {
+    const env = dotenv.config();
+    console.log(env);
+    if (env.error) {
+        throw env.error;
+    }
+    options['process.env.KEY_API'] = JSON.stringify(env.parsed.KEY_API);
+    })
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path

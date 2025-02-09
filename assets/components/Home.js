@@ -46,28 +46,22 @@ const Home = () => {
     <div className='home'>
       {apiData && (
         <>
-         <Profil 
-          apiData={apiData} 
-        />
+         <Profil apiData={apiData} />
         <div className='ctn-aboutme'>
           <div className='aboutme'>
             <h2>À propos de moi</h2>
             <div className='text' dangerouslySetInnerHTML={{ __html: apiData.aboutMe }} />
           </div>
           <div className='infos'>
-              {apiData.personalInfos.map((personalInfo) =>
-                personalInfo.link ? (
-                  <div className='info'>
-                    <div className='text-info'>
-                      <div className='title'>{personalInfo.name}</div>
-                      <a href={personalInfo.link} target="_blank" className='value'>{personalInfo.value}  <i className="bi bi-arrow-up-right"></i></a>
-                    </div>
-                  </div>
-                ) : 
-                <div className='info'>
+              {apiData.personalInfos.map((personalInfo, index) =>
+                <div className='info' key={index}>
                   <div className='text-info'>
                     <div className='title'>{personalInfo.name}</div>
-                    <div className='value'>{personalInfo.value}</div>
+                    {personalInfo.link ? (
+                      <a href={personalInfo.link} target="_blank" className='value'>{personalInfo.value}  <i className="bi bi-arrow-up-right"></i></a>
+                    ) : 
+                      <div className='value'>{personalInfo.value}</div>
+                    }
                   </div>
                 </div>
               )

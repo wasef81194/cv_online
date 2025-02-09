@@ -1,0 +1,40 @@
+@use "_variable.scss" as *;
+.ctn-aboutme{
+    display: flex;
+    margin-top: 50px;
+    border-bottom: 1px solid #e1e0e0;
+    padding-bottom: 25px;
+    .aboutme{
+        .text{
+            color: $text-grey;
+            line-height: 1.7;
+            max-width: 1050px;
+        }
+    }
+    .infos{
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        .info{
+            position: relative;
+            width: 50%;
+            .text-info{
+                width: 100%;
+                max-width: 128px;
+                position: absolute;
+                right: 0;
+                .title{
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    color: #686868;
+                }
+                .value{
+                    // color: #4f4f4f;
+                    color: black;
+                    text-decoration: none;
+                    font-weight: 500; // Medium
+                }
+            }
+        }
+    }
+}

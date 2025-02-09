@@ -66,3 +66,17 @@
         }
     }
 }
+.ctn-aboutme{
+    display: flex;
+    margin-top: 50px;
+    .aboutme{
+        .text{
+            color: $text-grey;
+            line-height: 1.7;
+            max-width: 1050px;
+        }
+    }
+    .infos{
+        flex: 1;
+    }
+}

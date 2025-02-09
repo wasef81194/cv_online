@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProfilRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfilRepository::class)]
@@ -28,8 +30,19 @@ class Profil
     #[ORM\Column(length: 255)]
     private ?string $job = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 900, nullable: true)]
     private ?string $aboutMe = null;
+
+    /**
+     * @var Collection<int, PersonalInfo>
+     */
+    #[ORM\OneToMany(targetEntity: PersonalInfo::class, mappedBy: 'profil')]
+    private Collection $personalInfos;
+
+    public function __construct()
+    {
+        $this->personalInfos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,4 +120,35 @@ class Profil
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, PersonalInfo>
+     */
+    public function getPersonalInfos(): Collection
+    {
+        return $this->personalInfos;
+    }
+
+    public function addPersonalInfo(PersonalInfo $personalInfo): static
+    {
+        if (!$this->personalInfos->contains($personalInfo)) {
+            $this->personalInfos->add($personalInfo);
+            $personalInfo->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonalInfo(PersonalInfo $personalInfo): static
+    {
+        if ($this->personalInfos->removeElement($personalInfo)) {
+            // set the owning side to null (unless already changed)
+            if ($personalInfo->getProfil() === $this) {
+                $personalInfo->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

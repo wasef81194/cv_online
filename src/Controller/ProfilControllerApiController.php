@@ -32,10 +32,11 @@ final class ProfilControllerApiController extends AbstractController
         if (!$profil) {
             return new JsonResponse(['error' => 'Profil not found'], 404);
         }
-
-       
+        // dd($profil);
         // Sérialise l'objet profil en JSON et le décode en tableau associatif
-        $jsonProfil = $serializer->serialize($profil, 'json');
+        $jsonProfil = $serializer->serialize($profil, 'json', [
+            'circular_reference_handler' => function ($object) {return $object->getId();},
+        ]);
         $profilArray = json_decode($jsonProfil, true);
 
         // Retourne la réponse JSON

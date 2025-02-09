@@ -22,6 +22,9 @@ class PersonalInfo
     #[ORM\ManyToOne(inversedBy: 'personalInfos')]
     private ?Profil $profil = null;
 
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $link = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class PersonalInfo
     public function setProfil(?Profil $profil): static
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): static
+    {
+        $this->link = $link;
 
         return $this;
     }

@@ -39,9 +39,16 @@ class Profil
     #[ORM\OneToMany(targetEntity: PersonalInfo::class, mappedBy: 'profil')]
     private Collection $personalInfos;
 
+    /**
+     * @var Collection<int, Experience>
+     */
+    #[ORM\OneToMany(targetEntity: Experience::class, mappedBy: 'profil')]
+    private Collection $experiences;
+
     public function __construct()
     {
         $this->personalInfos = new ArrayCollection();
+        $this->experiences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +152,36 @@ class Profil
             // set the owning side to null (unless already changed)
             if ($personalInfo->getProfil() === $this) {
                 $personalInfo->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Experience>
+     */
+    public function getExperiences(): Collection
+    {
+        return $this->experiences;
+    }
+
+    public function addExperience(Experience $experience): static
+    {
+        if (!$this->experiences->contains($experience)) {
+            $this->experiences->add($experience);
+            $experience->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience): static
+    {
+        if ($this->experiences->removeElement($experience)) {
+            // set the owning side to null (unless already changed)
+            if ($experience->getProfil() === $this) {
+                $experience->setProfil(null);
             }
         }
 

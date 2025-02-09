@@ -46,7 +46,7 @@ const Home = () => {
     <div className='home'>
       {apiData && (
         <>
-         <Profil apiData={apiData} />
+        <Profil apiData={apiData} />
         <div className='ctn-aboutme'>
           <div className='aboutme'>
             <h2>À propos de moi</h2>

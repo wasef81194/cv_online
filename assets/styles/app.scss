@@ -1,6 +1,7 @@
 @use "_variable.scss" as *;
 @use "profil.scss";
 @use "home.scss";
+@use "experience.scss";
 
 body{
     background: #FFFFFF;
@@ -13,6 +14,8 @@ body{
     margin: auto;
     width: calc(100% - 40px);
 }
+
+//Btn
 .btn{
     width: fit-content;
     padding: 10px;
@@ -31,6 +34,7 @@ body{
     border: 1px solid $border-grey;
 }
 
+//Loader
 .loader{
     position: absolute !important; 
     top: 40%; 
@@ -49,6 +53,7 @@ body{
 .loader .text{
     margin-top: 50px;
 }
+//Title
 h1{
     color: $title-color-black;
 }

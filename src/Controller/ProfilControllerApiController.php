@@ -21,12 +21,15 @@ final class ProfilControllerApiController extends AbstractController
      #[Route('', name: 'get_infos_profil', methods: ['GET'])]
      public function infos(Request $request, ApiKeyChecker $apiKeyChecker, ProfilRepository $profilRepository, SerializerInterface $serializer): JsonResponse
      {
-        //Verifie la clé
-        $key = $request->headers->get('Authorization');
-        if (!$apiKeyChecker->checkApiKey($key)) {
-            return new JsonResponse(['error' => 'Key not found'], 400);
-        }
-
+        // $admin = true;
+        // if (!$admin) {
+            //Verifie la clé
+            $key = $request->headers->get('Authorization');
+            if (!$apiKeyChecker->checkApiKey($key)) {
+                return new JsonResponse(['error' => 'Key not found'], 400);
+            }
+        // }
+        
         //Recupere toutes les infos du profil
         $profil = $profilRepository->findOneBy(['id' => $_ENV['ID_PROFIL']]);
         if (!$profil) {
@@ -38,7 +41,7 @@ final class ProfilControllerApiController extends AbstractController
             'circular_reference_handler' => function ($object) {return $object->getId();},
         ]);
         $profilArray = json_decode($jsonProfil, true);
-
+       
         // Retourne la réponse JSON
         return new JsonResponse($profilArray, 200);
     }

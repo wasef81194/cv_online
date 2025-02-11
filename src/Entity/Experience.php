@@ -32,6 +32,9 @@ class Experience
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?Profil $profil = null;
 
+    #[ORM\OneToOne(mappedBy: 'experience', cascade: ['persist', 'remove'])]
+    private ?Image $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,28 @@ class Experience
     public function setProfil(?Profil $profil): static
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($image === null && $this->image !== null) {
+            $this->image->setExperience(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($image !== null && $image->getExperience() !== $this) {
+            $image->setExperience($this);
+        }
+
+        $this->image = $image;
 
         return $this;
     }

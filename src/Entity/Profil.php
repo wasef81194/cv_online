@@ -42,7 +42,7 @@ class Profil
     /**
      * @var Collection<int, Experience>
      */
-    #[ORM\OneToMany(targetEntity: Experience::class, mappedBy: 'profil')]
+    #[ORM\OneToMany(targetEntity: Experience::class, mappedBy: 'profil', cascade: ['persist', 'remove'])]
     private Collection $experiences;
 
     public function __construct()

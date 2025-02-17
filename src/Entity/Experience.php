@@ -26,8 +26,8 @@ class Experience
     #[ORM\Column(length: 255)]
     private ?string $job = null;
 
-    #[ORM\Column(length: 1000)]
-    private ?string $description = null;
+    #[ORM\Column(type: Types::TEXT)]
+private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?Profil $profil = null;

@@ -2,11 +2,21 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
 import Profil from './Profil';
+import ModalExperience from './experience/Modal';
 
 const Home = () => {
   const [apiData, setApiData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedExperienceId, setSelectedExperienceId] = useState(null);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (idExperience) => {
+    setSelectedExperienceId(idExperience);
+    setIsOpen(true);
+  };
+  const handleClose = () => setIsOpen(false);
 
   const fetchData = useCallback(async () => {
     try {
@@ -78,7 +88,7 @@ const Home = () => {
         <h2>Experiences</h2>
         <div className='experiences'>
           {apiData.experiences.map((experience, index) =>
-            <div className='experience' key={index}>
+            <div className='experience btn-experience'  onClick={() => handleClick(experience.id)}  key={index}>
               <div className='infos'>
                 <div className='image'>
                   <img src={`../images/experiences/${experience.image.name}`} alt="Logo" />
@@ -96,6 +106,8 @@ const Home = () => {
             </div>
           )
           }
+          <ModalExperience isOpen={isOpen} onClose={handleClose} idExperience={selectedExperienceId}>
+          </ModalExperience>
         </div>
         </>
       )}

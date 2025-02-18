@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Profil;
-use App\Form\ProfilType;
 use App\Repository\ProfilRepository;
 use App\Service\ApiKeyChecker;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/api/profil')]
-final class ProfilControllerApiController extends AbstractController
+final class ProfilController extends AbstractController
 {
      //Recuperer toutes les information
      #[Route('', name: 'get_infos_profil', methods: ['GET'])]

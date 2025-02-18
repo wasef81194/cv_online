@@ -45,10 +45,17 @@ class Profil
     #[ORM\OneToMany(targetEntity: Experience::class, mappedBy: 'profil', cascade: ['persist', 'remove'])]
     private Collection $experiences;
 
+    /**
+     * @var Collection<int, Diplome>
+     */
+    #[ORM\OneToMany(targetEntity: Diplome::class, mappedBy: 'profil')]
+    private Collection $diplomes;
+
     public function __construct()
     {
         $this->personalInfos = new ArrayCollection();
         $this->experiences = new ArrayCollection();
+        $this->diplomes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -182,6 +189,36 @@ class Profil
             // set the owning side to null (unless already changed)
             if ($experience->getProfil() === $this) {
                 $experience->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Diplome>
+     */
+    public function getDiplomes(): Collection
+    {
+        return $this->diplomes;
+    }
+
+    public function addDiplome(Diplome $diplome): static
+    {
+        if (!$this->diplomes->contains($diplome)) {
+            $this->diplomes->add($diplome);
+            $diplome->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiplome(Diplome $diplome): static
+    {
+        if ($this->diplomes->removeElement($diplome)) {
+            // set the owning side to null (unless already changed)
+            if ($diplome->getProfil() === $this) {
+                $diplome->setProfil(null);
             }
         }
 

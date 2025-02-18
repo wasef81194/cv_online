@@ -19,6 +19,9 @@ class Image
     #[ORM\OneToOne(inversedBy: 'image', targetEntity: Experience::class)]
     private ?experience $experience = null;
 
+    #[ORM\ManyToOne(inversedBy: 'image')]
+    private ?Diplome $diplome = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Image
     public function setExperience(?experience $experience): static
     {
         $this->experience = $experience;
+
+        return $this;
+    }
+
+    public function getDiplome(): ?Diplome
+    {
+        return $this->diplome;
+    }
+
+    public function setDiplome(?Diplome $diplome): static
+    {
+        $this->diplome = $diplome;
 
         return $this;
     }

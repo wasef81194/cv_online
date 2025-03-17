@@ -19,7 +19,7 @@ class Image
     #[ORM\OneToOne(inversedBy: 'image', targetEntity: Experience::class)]
     private ?experience $experience = null;
 
-    #[ORM\ManyToOne(inversedBy: 'image')]
+    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
     private ?Diplome $diplome = null;
 
     public function getId(): ?int
@@ -58,6 +58,16 @@ class Image
 
     public function setDiplome(?Diplome $diplome): static
     {
+        // unset the owning side of the relation if necessary
+        if ($diplome === null && $this->diplome !== null) {
+            $this->diplome->setImage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($diplome !== null && $diplome->getImage() !== $this) {
+            $diplome->setImage($this);
+        }
+
         $this->diplome = $diplome;
 
         return $this;

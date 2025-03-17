@@ -31,14 +31,12 @@ class Diplome
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    /**
-     * @var Collection<int, Image>
-     */
-    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'diplome')]
-    private Collection $image;
 
     #[ORM\ManyToOne(inversedBy: 'diplomes')]
     private ?Profil $profil = null;
+
+    #[ORM\OneToOne(inversedBy: 'diplome', cascade: ['persist', 'remove'])]
+    private ?Image $image = null;
 
     public function __construct()
     {
@@ -110,35 +108,6 @@ class Diplome
         return $this;
     }
 
-    /**
-     * @return Collection<int, Image>
-     */
-    public function getImage(): Collection
-    {
-        return $this->image;
-    }
-
-    public function addImage(Image $image): static
-    {
-        if (!$this->image->contains($image)) {
-            $this->image->add($image);
-            $image->setDiplome($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): static
-    {
-        if ($this->image->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getDiplome() === $this) {
-                $image->setDiplome(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getProfil(): ?Profil
     {
@@ -148,6 +117,18 @@ class Diplome
     public function setProfil(?Profil $profil): static
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

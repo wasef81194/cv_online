@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Loader from './Loader';
 import Profil from './Profil';
 import Experiences from './Exeprience';
+import Diplomes from './Dimplome';
 
 const Home = () => {
   const [apiData, setApiData] = useState(null);
@@ -71,9 +72,13 @@ const Home = () => {
               }
           </div>
         </div>
-
-        <h2>Experiences</h2>
+        <h2 className='titleDiplomes'>Diplômes</h2>
+          <Diplomes diplomes={apiData.diplomes}></Diplomes>
+          
+        <h2 className='titleExperience'>Experiences</h2>
           <Experiences experiences={apiData.experiences}></Experiences>
+        
+        
         </>
       )}
     </div>

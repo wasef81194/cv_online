@@ -1,0 +1,53 @@
+@use "_variable.scss" as *;
+.diplomes{
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 10px;
+}
+.diplome {
+    flex: 1;
+    border: 1px solid $border-grey;
+    max-width: 535px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    .infos{
+        display: flex;
+        gap: 10px;
+        .image{
+            max-width: 70px;
+            max-height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                
+            }
+        }
+        .info{
+            .name{
+                margin-top: 10px;
+                font-weight: bold;
+            }
+            .ecole{
+                margin-top: 10px;
+                color: $text-grey;
+            }
+            .description{
+                margin-top: 10px;
+                color: $text-grey;
+            }
+        }
+    }
+    .date{
+        display: flex;
+        color: $text-grey;
+        margin-top: 15px;
+        gap: 5px;
+    }
+    
+}
+

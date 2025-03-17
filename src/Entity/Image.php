@@ -22,6 +22,9 @@ class Image
     #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
     private ?Diplome $diplome = null;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?Projet $projet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +72,18 @@ class Image
         }
 
         $this->diplome = $diplome;
+
+        return $this;
+    }
+
+    public function getProjet(): ?Projet
+    {
+        return $this->projet;
+    }
+
+    public function setProjet(?Projet $projet): static
+    {
+        $this->projet = $projet;
 
         return $this;
     }

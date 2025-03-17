@@ -1,14 +1,14 @@
 @use "_variable.scss" as *;
-.titleExperience{
+.titleProjet{
     margin-top: 50px;
 }
-.experiences {
+.projets {
     display: flex;
     flex-wrap: wrap;
     
     gap: 10px;
 }
-.experience {
+.projet {
     border: 1px solid $border-grey;
     max-width: 491px;
     width: 100%;
@@ -31,11 +31,11 @@
             }
         }
         .info{
-            .job{
+            .name{
                 margin-top: 10px;
                 font-weight: bold;
             }
-            .entreprise{
+            .ecole{
                 margin-top: 10px;
                 color: $text-grey;
             }
@@ -75,7 +75,7 @@
             cursor: pointer;
         }
     }
-    .modal-experience {
+    .modal-projet {
         z-index: 3;
         top: 85px;
         max-height: 700px;
@@ -105,8 +105,8 @@
             .close:hover{
                 color: black;
             }
-            .ctn-experience{
-                .info-experience{
+            .ctn-projet{
+                .infos-projet{
                     border-bottom: 1px solid $border-grey;
                     padding-bottom: 14px;
                     display: flex;
@@ -121,12 +121,12 @@
                             width: 100%;
                         }
                     }
-                    .info-job{
+                    .info-projet{
                         h2{
                             margin-bottom: 5px;
                             color: black;
                         }
-                        .entreprise{
+                        .ecole{
                             color: $text-grey;
                         }
                         .date{

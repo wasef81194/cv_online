@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const ModalExperience = ({ isOpen, onClose, idExperience }) => {
-    const [apiDataExperience, setApiDataExperience] = useState(null);
+const ModalProjet= ({ isOpen, onClose, idProjet }) => {
+    const [apiDataProjet, setApiDataProjet] = useState(null);
     const [errorApi, setErrorApi] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -10,10 +10,10 @@ const ModalExperience = ({ isOpen, onClose, idExperience }) => {
         if (!isOpen) return; // Ne pas charger si la modale n'est pas ouverte
        
         try {
-            const response = await fetch('/api/experience', {
+            const response = await fetch('/api/projet', {
                 method: 'GET',
                 headers: {
-                    'idExperience': idExperience,
+                    'idProjet': idProjet,
                     'Authorization': `${process.env.KEY_API}`,
                     'Content-Type': 'application/json',
                 },
@@ -24,7 +24,7 @@ const ModalExperience = ({ isOpen, onClose, idExperience }) => {
             }
 
             const data = await response.json();
-            setApiDataExperience(data);
+            setApiDataProjet(data);
             
         } catch (error) {
             setErrorApi(error.message);
@@ -53,29 +53,29 @@ const ModalExperience = ({ isOpen, onClose, idExperience }) => {
             ) : errorApi ? (
                 <p className='error'>Erreur : {errorApi} <button onClick={onClose}>fermer</button></p>
             ) : (
-            <dialog open className='modal modal-experience'>
+            <dialog open className='modal modal-projet'>
                 <div className='ctn-modal'>
                         <div>
                             <div className='close' onClick={onClose}><i className="bi bi-x-lg"></i></div>
-                            {apiDataExperience && (
-                                <div className='ctn-experience'>
-                                    <div className='info-experience'>
+                            {apiDataProjet && (
+                                <div className='ctn-projet'>
+                                    <div className='infos-projet'>
                                         <div className='image'>
-                                            <img src={`../images/experiences/${apiDataExperience.image.name}`} alt="Logo" />
+                                            <img src={`../images/projets/${apiDataProjet.images[0].name}`} alt="Logo" />
                                         </div>
-                                        <div className='info-job'> 
+                                        <div className='info-projet'> 
                                             <div>
-                                                <h2>{apiDataExperience.job}</h2>
-                                                <div className='entreprise'>{apiDataExperience.entreprise}</div>
+                                                <h2>{apiDataProjet.name}</h2>
+                                                <div className='ecole'>{apiDataProjet.ecole}</div>
                                             </div>
                                             <div className='date'>
-                                            <div className='start'>{formatDate(apiDataExperience.dateStart)}</div>
+                                            <div className='start'>{formatDate(apiDataProjet.dateStart)}</div>
                                             <div> - </div>
-                                            <div className='end'>{formatDate(apiDataExperience.dateEnd)}</div>
+                                            <div className='end'>{formatDate(apiDataProjet.dateEnd)}</div>
                                         </div>
                                     </div>
                                     </div>
-                                    <div className='description' dangerouslySetInnerHTML={{ __html: apiDataExperience.description }}></div>
+                                    <div className='description' dangerouslySetInnerHTML={{ __html: apiDataProjet.description }}></div>
                                 </div>
                             )}
                         </div>
@@ -87,4 +87,4 @@ const ModalExperience = ({ isOpen, onClose, idExperience }) => {
     );
 };
 
-export default ModalExperience;
+export default ModalProjet;

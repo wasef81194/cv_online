@@ -4,6 +4,7 @@ import Loader from './Loader';
 import Profil from './Profil';
 import Experiences from './Exeprience';
 import Diplomes from './Dimplome';
+import Projets from './Projet';
 
 const Home = () => {
   const [apiData, setApiData] = useState(null);
@@ -74,9 +75,12 @@ const Home = () => {
         </div>
         <h2 className='titleDiplomes'>Diplômes</h2>
           <Diplomes diplomes={apiData.diplomes}></Diplomes>
-          
+
         <h2 className='titleExperience'>Experiences</h2>
           <Experiences experiences={apiData.experiences}></Experiences>
+        
+        <h2 className='titleProjet'>Projets</h2>
+          <Projets projets={apiData.projets}></Projets>
         
         
         </>

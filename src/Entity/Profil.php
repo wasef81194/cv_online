@@ -51,11 +51,18 @@ class Profil
     #[ORM\OneToMany(targetEntity: Diplome::class, mappedBy: 'profil')]
     private Collection $diplomes;
 
+    /**
+     * @var Collection<int, Projet>
+     */
+    #[ORM\OneToMany(targetEntity: Projet::class, mappedBy: 'profil')]
+    private Collection $projets;
+
     public function __construct()
     {
         $this->personalInfos = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->diplomes = new ArrayCollection();
+        $this->projets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -219,6 +226,36 @@ class Profil
             // set the owning side to null (unless already changed)
             if ($diplome->getProfil() === $this) {
                 $diplome->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Projet>
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjet(Projet $projet): static
+    {
+        if (!$this->projets->contains($projet)) {
+            $this->projets->add($projet);
+            $projet->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjet(Projet $projet): static
+    {
+        if ($this->projets->removeElement($projet)) {
+            // set the owning side to null (unless already changed)
+            if ($projet->getProfil() === $this) {
+                $projet->setProfil(null);
             }
         }
 

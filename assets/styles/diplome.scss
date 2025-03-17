@@ -2,13 +2,11 @@
 .diplomes{
     display: flex;
     flex-wrap: wrap;
-    
     gap: 10px;
 }
 .diplome {
-    flex: 1;
     border: 1px solid $border-grey;
-    max-width: 535px;
+    max-width: 491px;
     width: 100%;
     padding: 20px;
     border-radius: 10px;

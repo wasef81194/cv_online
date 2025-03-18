@@ -17,7 +17,7 @@ const Experiences = ({experiences}) => {
     };
     return (
         <div className='experiences'>
-        {experiences.map((experience, index) =>
+        {experiences.sort((a, b) => new Date(a.dateStart) - new Date(b.dateStart)).map((experience, index) =>
         <div className='experience btn-experience'  onClick={() => handleClick(experience.id)}  key={index}>
             <div className='infos'>
             <div className='image'>

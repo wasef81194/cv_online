@@ -8,7 +8,7 @@ const Diplomes = ({diplomes}) => {
     };
     return (
     <div className='diplomes'>
-        {diplomes.map((diplome, index) =>
+        {diplomes.sort((a, b) => new Date(a.dateStart) - new Date(b.dateStart)).map((diplome, index) =>
         <div className='diplome' key={index}>
             <div className='infos'>
             <div className='image'>

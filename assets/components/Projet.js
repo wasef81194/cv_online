@@ -12,13 +12,13 @@ const Projets = ({projets}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const formatDate = (dateString) => {
-        if (!dateString) return 'Présent'; // Si la date est null ou vide
+        if (!dateString) return "Aujourd'hui"; // Si la date est null ou vide
         const date = new Date(dateString);
         return date.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
     };
     return (
         <div className='projets'>
-        {projets.map((projet, index) =>
+        {projets.sort((a, b) => new Date(a.dateStart) - new Date(b.dateStart)).map((projet, index) =>
         <div className='projet btn-projet'  onClick={() => handleClick(projet.id)}  key={index}>
             <div className='infos'>
             <div className='image'>

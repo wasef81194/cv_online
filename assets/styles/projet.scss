@@ -15,6 +15,7 @@
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
+    background: white;
     .infos{
         display: flex;
         gap: 10px;
@@ -140,6 +141,30 @@
                 .description{
                     margin-top: 10px;
                     line-height: 1.8;
+                }
+            }
+            h3{
+                margin-top: 50px;
+            }
+            .medias-projet{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                .video-projet{
+                    width: 100%;
+                    video{
+                        width: 100%;
+                    }
+                }
+                .image-projet{
+                    max-height: 300px;
+                    max-width: 275px;
+                    width: fit-content;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
                 }
             }
         }

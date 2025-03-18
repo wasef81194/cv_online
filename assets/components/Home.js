@@ -5,6 +5,7 @@ import Profil from './Profil';
 import Experiences from './Exeprience';
 import Diplomes from './Dimplome';
 import Projets from './Projet';
+import Footer from './Footer';
 
 const Home = () => {
   const [apiData, setApiData] = useState(null);
@@ -48,6 +49,7 @@ const Home = () => {
 
   //Page
   return (
+    <>
     <div className='home'>
       {apiData && (
         <>
@@ -85,7 +87,10 @@ const Home = () => {
         
         </>
       )}
+      
     </div>
+    <Footer></Footer>
+    </>
   );
 };
 

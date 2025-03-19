@@ -51,99 +51,47 @@
     }
     
 }
-.parent-modal {
-    background: rgba(0, 0, 0, 0.582);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    .loader{
-        color: white;
-    }
-    .error{
-        position: absolute !important; 
-        top: 40%; 
-        left: 50%; 
-        transform: translate(-50%, -50%);
-        color: red;
-        button{
-            background: red;
-            color: white;
-            border: 1px solid red;
-            cursor: pointer;
-        }
-    }
-    .modal-experience {
-        z-index: 3;
-        top: 85px;
-        max-height: 700px;
-        border: 1px solid $border-grey;
-        padding: 0;
-        overflow: hidden;
-        border-radius: 10px;
-        position: relative;
-        max-width: 900px;
-        width: 100%;
-        .ctn-modal{
-            overflow-y: scroll;
-            overflow-x: hidden;
-            scrollbar-width: thin;
-            height: 100%;
-            max-height: 650px;
-            padding: 25px;
-            padding-right: 5px; // Espace pour la scrollbar
-            .close{
-                color: rgb(59, 59, 59);
-                position: absolute;
-                top: 10px;
-                right: 14px;
-                cursor: pointer;
-                padding: 10px;
-            }
-            .close:hover{
-                color: black;
-            }
-            .ctn-experience{
-                .info-experience{
-                    border-bottom: 1px solid $border-grey;
-                    padding-bottom: 14px;
-                    display: flex;
-                    gap: 30px;
-                    .image{
-                        height: 115px;
-                        width: 115px;
-                        border-radius: 100px;
-                        overflow: hidden;
-                        img{
-                            object-fit: contain;
-                            width: 100%;
-                        }
-                    }
-                    .info-job{
-                        h2{
-                            margin-bottom: 5px;
-                            color: black;
-                        }
-                        .entreprise{
-                            color: $text-grey;
-                        }
-                        .date{
-                            color: $text-grey;
-                            display: flex;
-                            gap: 5px;
-                            margin-top: 25px;
-                        }
+
+/*Modal*/
+.modal-experience {
+    .ctn-modal{
+        .ctn-experience{
+            .info-experience{
+                border-bottom: 1px solid $border-grey;
+                padding-bottom: 14px;
+                display: flex;
+                gap: 30px;
+                .image{
+                    height: 115px;
+                    width: 115px;
+                    border-radius: 100px;
+                    overflow: hidden;
+                    img{
+                        object-fit: contain;
+                        width: 100%;
                     }
                 }
-                .description{
-                    margin-top: 10px;
-                    line-height: 1.8;
+                .info-job{
+                    h2{
+                        margin-bottom: 5px;
+                        color: black;
+                    }
+                    .entreprise{
+                        color: $text-grey;
+                    }
+                    .date{
+                        color: $text-grey;
+                        display: flex;
+                        gap: 5px;
+                        margin-top: 25px;
+                    }
                 }
+            }
+            .description{
+                margin-top: 10px;
+                line-height: 1.8;
             }
         }
     }
 }
+

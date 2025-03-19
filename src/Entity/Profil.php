@@ -57,12 +57,19 @@ class Profil
     #[ORM\OneToMany(targetEntity: Projet::class, mappedBy: 'profil')]
     private Collection $projets;
 
+    /**
+     * @var Collection<int, Remind>
+     */
+    #[ORM\OneToMany(targetEntity: Remind::class, mappedBy: 'profil')]
+    private Collection $reminds;
+
     public function __construct()
     {
         $this->personalInfos = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->diplomes = new ArrayCollection();
         $this->projets = new ArrayCollection();
+        $this->reminds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,6 +263,36 @@ class Profil
             // set the owning side to null (unless already changed)
             if ($projet->getProfil() === $this) {
                 $projet->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Remind>
+     */
+    public function getReminds(): Collection
+    {
+        return $this->reminds;
+    }
+
+    public function addRemind(Remind $remind): static
+    {
+        if (!$this->reminds->contains($remind)) {
+            $this->reminds->add($remind);
+            $remind->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRemind(Remind $remind): static
+    {
+        if ($this->reminds->removeElement($remind)) {
+            // set the owning side to null (unless already changed)
+            if ($remind->getProfil() === $this) {
+                $remind->setProfil(null);
             }
         }
 

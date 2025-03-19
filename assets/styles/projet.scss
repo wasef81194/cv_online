@@ -1,13 +1,16 @@
 @use "_variable.scss" as *;
-.titleProjet{
+
+.titleProjet {
     margin-top: 50px;
 }
+
 .projets {
     display: flex;
     flex-wrap: wrap;
-    
+
     gap: 10px;
 }
+
 .projet {
     border: 1px solid $border-grey;
     max-width: 491px;
@@ -17,155 +20,121 @@
     cursor: pointer;
     background: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    .infos{
+
+    .infos {
         display: flex;
         gap: 10px;
-        .image{
+
+        .image {
             max-width: 70px;
             max-height: 70px;
             border-radius: 50%;
             overflow: hidden;
-            img{
+
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                
+
             }
         }
-        .info{
-            .name{
+
+        .info {
+            .name {
                 margin-top: 10px;
                 font-weight: bold;
             }
-            .ecole{
+
+            .ecole {
                 margin-top: 10px;
                 color: $text-grey;
             }
         }
     }
-    .date{
+
+    .date {
         display: flex;
         color: $text-grey;
         margin-top: 15px;
         gap: 5px;
     }
-    
+
 }
-.parent-modal {
-    background: rgba(0, 0, 0, 0.582);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    .loader{
-        color: white;
-    }
-    .error{
-        position: absolute !important; 
-        top: 40%; 
-        left: 50%; 
-        transform: translate(-50%, -50%);
-        color: red;
-        button{
-            background: red;
-            color: white;
-            border: 1px solid red;
-            cursor: pointer;
-        }
-    }
-    .modal-projet {
-        z-index: 3;
-        top: 85px;
-        max-height: 700px;
-        border: 1px solid $border-grey;
-        padding: 0;
-        overflow: hidden;
-        border-radius: 10px;
-        position: relative;
-        max-width: 900px;
-        width: 100%;
-        .ctn-modal{
-            overflow-y: scroll;
-            overflow-x: hidden;
-            scrollbar-width: thin;
-            height: 100%;
-            max-height: 650px;
-            padding: 25px;
-            padding-right: 5px; // Espace pour la scrollbar
-            .close{
-                color: rgb(59, 59, 59);
-                position: absolute;
-                top: 10px;
-                right: 14px;
-                cursor: pointer;
-                padding: 10px;
-            }
-            .close:hover{
-                color: black;
-            }
-            .ctn-projet{
-                .infos-projet{
-                    border-bottom: 1px solid $border-grey;
-                    padding-bottom: 14px;
-                    display: flex;
-                    gap: 30px;
-                    .image{
-                        height: 115px;
-                        width: 115px;
-                        border-radius: 100px;
-                        overflow: hidden;
-                        img{
-                            object-fit: contain;
-                            width: 100%;
-                        }
-                    }
-                    .info-projet{
-                        h2{
-                            margin-bottom: 5px;
-                            color: black;
-                        }
-                        .ecole{
-                            color: $text-grey;
-                        }
-                        .date{
-                            color: $text-grey;
-                            display: flex;
-                            gap: 5px;
-                            margin-top: 25px;
-                        }
-                    }
-                }
-                .description{
-                    margin-top: 10px;
-                    line-height: 1.8;
-                }
-            }
-            h3{
-                margin-top: 50px;
-            }
-            .medias-projet{
+
+.modal-projet {
+    .ctn-modal {
+        padding-right: 5px !important; // Espace pour la scrollbar
+        .ctn-projet {
+
+            .infos-projet {
+                border-bottom: 1px solid $border-grey;
+                padding-bottom: 14px;
                 display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-                .video-projet{
-                    width: 100%;
-                    video{
+                gap: 30px;
+
+                .image {
+                    height: 115px;
+                    width: 115px;
+                    border-radius: 100px;
+                    overflow: hidden;
+
+                    img {
+                        object-fit: contain;
                         width: 100%;
                     }
                 }
-                .image-projet{
-                    max-height: 300px;
-                    max-width: 275px;
-                    width: fit-content;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                        object-fit: contain;
+
+                .info-projet {
+                    h2 {
+                        margin-bottom: 5px;
+                        color: black;
                     }
+
+                    .ecole {
+                        color: $text-grey;
+                    }
+
+                    .date {
+                        color: $text-grey;
+                        display: flex;
+                        gap: 5px;
+                        margin-top: 25px;
+                    }
+                }
+            }
+
+            .description {
+                margin-top: 10px;
+                line-height: 1.8;
+            }
+        }
+
+        h3 {
+            margin-top: 50px;
+        }
+
+        .medias-projet {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            .video-projet {
+                width: 100%;
+
+                video {
+                    width: 100%;
+                }
+            }
+
+            .image-projet {
+                max-height: 300px;
+                max-width: 275px;
+                width: fit-content;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
                 }
             }
         }

@@ -37,6 +37,7 @@ final class ProfilController extends AbstractController
         // Sérialise l'objet profil en JSON et le décode en tableau associatif
         $jsonProfil = $serializer->serialize($profil, 'json', [
             'circular_reference_handler' => function ($object) {return $object->getId();},
+            'ignored_attributes' => ['reminds'],
         ]);
         $profilArray = json_decode($jsonProfil, true);
        

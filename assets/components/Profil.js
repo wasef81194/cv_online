@@ -104,7 +104,6 @@ const Profil = ({apiData}) => {
           class: 'alert-danger',
         });
       })
-   console.log("Envoyer");
   }
 
   return (

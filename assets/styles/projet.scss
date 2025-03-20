@@ -140,3 +140,19 @@
         }
     }
 }
+
+/*Responsive*/
+@media (max-width: 775px) {
+    .projet{
+        max-width: 100%;
+    }
+    .modal-projet{
+        .ctn-modal {
+            .medias-projet {
+                .image-projet{
+                    max-width: 331px;
+                }
+            }
+        }
+    }
+}

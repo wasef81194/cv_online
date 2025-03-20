@@ -38,3 +38,24 @@
         }
     }
 }
+
+/*Responsive*/
+@media (max-width: 1400px) {
+    .ctn-aboutme{
+        flex-flow: column;
+        gap: 15px;
+        .infos{
+            flex-flow: column;
+            gap: 15px;
+            .info{
+                .text-info{
+                    position: unset;
+                    max-width: 100%;
+                    .title{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+}

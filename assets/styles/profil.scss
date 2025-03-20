@@ -26,6 +26,7 @@
             bottom: -20px;
             left: 20px;
             z-index: 1;
+            height: fit-content;
 
             .img-pp {
                 width: 100%;
@@ -132,6 +133,24 @@
             }
             .alert-danger{
                 background: #c40000;
+            }
+        }
+    }
+}
+
+/*Responsive*/
+@media (max-width: 775px) {
+    .profile{
+        .info-profile {
+            flex-flow: column;
+            .contact{
+                justify-content: start;
+            }
+            .empty{
+                height: 95px;
+            }
+            .pp{
+                top: 30px;
             }
         }
     }

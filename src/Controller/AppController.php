@@ -15,6 +15,7 @@ final class AppController extends AbstractController
     #[Route('/api', name: 'api', methods: ['GET'])]
     public function api(Request $request, ApiKeyChecker $apiKeyChecker): JsonResponse
     { 
+        
         // Récupérer le paramètre 'key' depuis la requête GET
         $key = $request->query->get('key');
         // Vérifiez si la clé est la bonne

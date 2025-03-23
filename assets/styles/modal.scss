@@ -58,3 +58,17 @@
         }
     }
 }
+
+/*Responsive*/
+@media (max-width: 1149px) {
+    .parent-modal {
+        .modal{
+            max-height: calc(100% - 20px);
+            .ctn-modal{
+                .close{
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+}

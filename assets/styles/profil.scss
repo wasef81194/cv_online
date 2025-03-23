@@ -139,13 +139,35 @@
 }
 
 /*Responsive*/
-@media (max-width: 775px) {
+@media (max-width: 1149px) {
+    .profile{
+        .info-profile {
+            .contact *{
+                font-size: 26px !important;
+            }
+            .info {
+                p{
+                    font-size: 29px;
+                }
+            }
+            .pp{
+                top: 103px;
+            }
+        }
+        .form-call {
+            *{
+                font-size: 25px;
+            }
+            textarea{
+                height: 230px;
+            }
+        }
+    }
+}
+@media (max-width: 1040px) {
     .profile{
         .info-profile {
             flex-flow: column;
-            .contact{
-                justify-content: start;
-            }
             .empty{
                 height: 95px;
             }
@@ -154,4 +176,5 @@
             }
         }
     }
+    
 }

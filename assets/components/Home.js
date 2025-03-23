@@ -12,8 +12,6 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
-
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch('/api/profil', {
